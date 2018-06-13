@@ -53,7 +53,7 @@ function onCommand(session, command) {
 }
 
 function echo(session, message) {
-  session.get('state') = 'echo'
+  session.set('state', 'echo')
   sendMessage(session, 'I will now echo')
 }
 
