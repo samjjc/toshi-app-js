@@ -29,7 +29,7 @@ bot.onEvent = function(session, message) {
 
 function onMessage(session, message) {
   if ((session.get('state') || '') == 'echo') {
-    session.reply(message.body)
+    sendMessage(session, message.body)
   }
 }
 
