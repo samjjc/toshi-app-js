@@ -7,6 +7,7 @@ let bot = new Bot()
 // ROUTING
 
 bot.onEvent = function(session, message) {
+  console.log("this is the message:")
   console.log(message)
   switch (message.type) {
     case 'Init':
