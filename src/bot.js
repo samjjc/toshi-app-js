@@ -28,7 +28,9 @@ bot.onEvent = function(session, message) {
 }
 
 function onMessage(session, message) {
-  session.reply(message.body)
+  if ((session.get('state') || '') == 'echo') {
+    session.reply(message.body)
+  }
 }
 
 function onCommand(session, command) {
@@ -42,7 +44,15 @@ function onCommand(session, command) {
     case 'donate':
       donate(session)
       break
+    case 'echo':
+      echo(session)
+      break
     }
+}
+
+function echo(session, message) {
+  session.get('state') = 'echo'
+  sendMessage(session, 'I will now echo')
 }
 
 function onPayment(session, message) {
@@ -97,7 +107,8 @@ function sendMessage(session, message) {
   let controls = [
     {type: 'button', label: 'Ping', value: 'ping'},
     {type: 'button', label: 'Count', value: 'count'},
-    {type: 'button', label: 'Donate', value: 'donate'}
+    {type: 'button', label: 'Donate', value: 'donate'},
+    {type: 'button', label: 'Echo', value: 'echo'}    
   ]
   session.reply(SOFA.Message({
     body: message,
