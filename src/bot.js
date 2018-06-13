@@ -7,6 +7,7 @@ let bot = new Bot()
 // ROUTING
 
 bot.onEvent = function(session, message) {
+  console.log(message)
   switch (message.type) {
     case 'Init':
       welcome(session)
@@ -27,7 +28,9 @@ bot.onEvent = function(session, message) {
 }
 
 function onMessage(session, message) {
-  welcome(session)
+  session.reply("test")
+  // welcome(session)
+  // echo(session, message)
 }
 
 function onCommand(session, command) {
