@@ -30,6 +30,8 @@ bot.onEvent = function(session, message) {
 function onMessage(session, message) {
   if ((session.get('state') || '') == 'echo') {
     sendMessage(session, message.body)
+  } else {
+    sendMessage(session, 'Choose an option')
   }
 }
 
